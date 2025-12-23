@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HAPPY 20TH RITHIKASHRI JAYABALAN</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #FFD6E8;
+            --heading-color: #C2185B;
+            --name-color: #7B1FA2;
+            --text-color: #333333;
+            --highlight-color: #D4AF37;
+            --button-color: #FF5FA2;
+            --med-teal: #00796b;
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            width: 100%; height: 100%;
+            background-color: var(--bg-color);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            touch-action: manipulation;
+        }
+
+        /* --- HOMEPAGE --- */
+        #gift-stage {
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
+            height: 100vh; width: 100%;
+            background-color: var(--bg-color);
+            z-index: 100; position: fixed; top:0; left:0;
+            cursor: pointer; text-align: center;
+        }
+
+        .gift-box { 
+            font-size: 110px; 
+            animation: bounce 2s infinite; 
+            filter: drop-shadow(0 10px 15px rgba(194, 24, 91, 0.2));
+        }
+
+        .open-btn {
+            margin-top: 30px;
+            background-color: var(--button-color);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(255, 95, 162, 0.4);
+            text-transform: uppercase;
+        }
+
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-30px);} }
+
+        /* --- CELEBRATION STAGE --- */
+        #celebration-stage {
+            display: none; height: 100vh; width: 100%;
+            overflow-y: auto; box-sizing: border-box;
+            padding: 20px; text-align: center;
+            position: relative;
+            background-color: var(--bg-color);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 40px;
+            padding: 50px 25px;
+            box-shadow: 0 25px 50px rgba(123, 31, 162, 0.15);
+            max-width: 500px; margin: 20px auto;
+            position: relative; z-index: 10;
+        }
+
+        .purple-header {
+            font-family: 'Playfair Display', serif;
+            color: var(--name-color);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            font-weight: 900;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .cake-display {
+            font-size: 140px; /* Massive Regular Cake */
+            display: inline-block;
+            margin-bottom: 25px;
+            animation: cakePop 3s infinite ease-in-out;
+            filter: drop-shadow(0 10px 10px rgba(0,0,0,0.1));
+        }
+
+        @keyframes cakePop {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        .wish-container {
+            text-align: justify; line-height: 1.8;
+            color: var(--text-color); font-size: 1.05rem;
+        }
+
+        .wish-container b { color: var(--heading-color); }
+        .med-highlight { color: var(--med-teal); font-weight: 700; }
+
+        /* Highlighted Signature */
+        .signature-highlight {
+            margin-top: 40px;
+            padding: 25px 15px;
+            background: linear-gradient(135deg, #f3e5f5 0%, #fff 100%);
+            border-radius: 25px;
+            border: 2px solid var(--name-color);
+            box-shadow: 0 10px 20px rgba(123, 31, 162, 0.1);
+        }
+
+        .signature-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900; 
+            color: var(--name-color);
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            margin: 0;
+            line-height: 1.2;
+            letter-spacing: 1px;
+        }
+
+        .doctor-coat-icon {
+            font-size: 65px;
+            display: block;
+            margin: 0;
+            line-height: 1;
+        }
+
+        /* Background Decorations */
+        .bg-item { 
+            position: fixed; 
+            pointer-events: none; 
+            z-index: 1; 
+            opacity: 0.6; 
+            animation: drift 8s infinite linear;
+        }
+
+        @keyframes drift {
+            0% { transform: translateY(110vh) rotate(0); }
+            100% { transform: translateY(-20vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="gift-stage" onclick="startCelebration()">
+        <div class="gift-box">🎁</div>
+        <button class="open-btn">TAP FOR THE SURPRISE</button>
+    </div>
+
+    <div id="celebration-stage">
+        <div id="decor-container"></div>
+        
+        <div class="card">
+            <div class="purple-header">
+                HAPPY 20TH BIRTHDAY<br>RITHIKASHRI JAYABALAN
+            </div>
+            
+            <div class="cake-display">🎂</div>
+
+            <div class="wish-container">
+                <p>Happy 20th Birthday, <b>RITHIKA ✨</b>. As you step into your twenties, may your life be guided by purpose, strength, and quiet confidence. Twenty marks the beginning of becoming—of believing in yourself and the future you are shaping.</p>
+                
+                <p>The path you’ve chosen in <span class="med-highlight">medicine</span> requires courage and dedication. Every long day and late night is shaping you into someone who will touch lives with knowledge, care, and compassion.</p>
+                
+                <p>Through it all, keep that smile on your face. A reminder of your resilience, grace, and inner strength. May your journey be filled with growth, wisdom, and moments that reassure you of how capable you truly are.</p>
+                
+                <div class="signature-highlight">
+                    <p class="signature-text">HAPPY BIRTHDAY,<br>DR. RITHIKASHRI JAYABALAN</p>
+                    <span class="doctor-coat-icon">🥼</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function startCelebration() {
+            document.getElementById('gift-stage').style.display = 'none';
+            document.getElementById('celebration-stage').style.display = 'block';
+            createDecor();
+            launchMagic();
+        }
+
+        function createDecor() {
+            const container = document.getElementById('decor-container');
+            const icons = ['🌸', '✨', '🩺', '🥼', '🎓', '🌟', '🌼'];
+            for (let i = 0; i < 40; i++) {
+                const el = document.createElement('div');
+                el.className = 'bg-item';
+                el.style.left = Math.random() * 95 + 'vw';
+                el.style.top = Math.random() * 100 + 'vh'; 
+                el.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                el.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                el.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+                container.appendChild(el);
+            }
+        }
+
+        function launchMagic() {
+            const end = Date.now() + (12 * 1000);
+            (function frame() {
+                confetti({
+                    particleCount: 4,
+                    angle: 60, spread: 60, origin: { x: 0 },
+                    colors: ['#7B1FA2', '#FF5FA2', '#D4AF37']
+                });
+                confetti({
+                    particleCount: 4,
+                    angle: 120, spread: 60, origin: { x: 1 },
+                    colors: ['#C2185B', '#ffffff', '#7B1FA2']
+                });
+                if (Date.now() < end) requestAnimationFrame(frame);
+            }());
+            
+            confetti({
+                particleCount: 250,
+                spread: 120,
+                origin: { y: 0.6 },
+                colors: ['#7B1FA2', '#C2185B', '#D4AF37']
+            });
+        }
+    </script>
+</body>
+</html>
